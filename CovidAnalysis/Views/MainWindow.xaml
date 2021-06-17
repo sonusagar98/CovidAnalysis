@@ -1,0 +1,40 @@
+﻿<Window x:Class="CovidAnalysis.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="610">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel CanVerticallyScroll="True">
+            <ComboBox Loaded="ComboBox1_Loaded" SelectionChanged="ComboBox1_SelectionChanged" Margin="10,10,0,13" Name="ComboBox1" HorizontalAlignment="Left"   
+              VerticalAlignment="Top" Width="194" Height="30">
+            </ComboBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0*"/>
+                </Grid.ColumnDefinitions>
+                <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="0,0,0.4,-0.2" />
+                <DataGrid ItemsSource="{Binding VaccinationDataToDisplay}" Name = "dataGrid" AlternatingRowBackground = "LightBlue"  
+                     AlternationCount="2" AutoGenerateColumns = "False" Margin="0,0,-85.6,-0.2" HorizontalAlignment="Left" Width="Auto" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header = "Date" Binding = "{Binding DateTime}" />
+                        <DataGridTextColumn Header = "State" Binding = "{Binding State}" />
+                        <DataGridTextColumn Header = "Total Vaccinated" Binding = "{Binding TotalVaccinated}"/>
+                        <DataGridTextColumn Header = "First Dose" Binding = "{Binding FirstDose}" />
+                        <DataGridTextColumn Header = "Second Dose" Binding = "{Binding SecondDose}" />
+                        <DataGridTextColumn Header = "Covaxin" Binding = "{Binding Covaxin}" />
+                        <DataGridTextColumn Header = "Covishield" Binding = "{Binding Covishield}" />
+                        <DataGridTextColumn Header = "18 age group" Binding = "{Binding _18}" />
+                        <DataGridTextColumn Header = "45 age group" Binding = "{Binding _45}" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
